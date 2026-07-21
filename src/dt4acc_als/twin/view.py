@@ -1,7 +1,7 @@
 from typing import Dict, Tuple
 
 from dt4acc.custom_epics.ioc.view import View
-from dt4acc.custom_facility.maxiv.liasion_translator_setup import TranslatorService
+from dt4acc_lib.bl.translator_service import TranslatorService
 from dt4acc_lib.interfaces.utils.liaison_manager import LiaisonManagerBase
 from dt4acc_lib.interfaces.utils.state_conversion import StateConversion
 from dt4acc_lib.model.utils.command import ReadCommand
