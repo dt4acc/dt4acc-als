@@ -1,0 +1,52 @@
+[build-system]
+requires = ["hatchling>=1.24"]
+build-backend = "hatchling.build"
+
+[project]
+name = "dt4acc-als"
+version = "0.1.0"
+description = "digital twin for accelerators, based on dt4acc"
+authors = [
+  { name = "Waheedullah Sulaiman Khail" },
+  { name = "Pierre Schnizer" },
+]
+license = { text = "GPL-3.0" }
+requires-python = ">=3.7"
+keywords = []
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Intended Audience :: Science/Research",
+  "License :: OSI Approved :: GNU General Public License (GPL)",
+  "Programming Language :: Python :: 3",
+  "Topic :: Scientific/Engineering :: Physics",
+]
+
+dependencies = [
+    "dt4acc-lib>=2.0.0a0",
+    "dt4acc[epics]>=2.0.0a0",
+    "pyaml",
+    "pydantic",
+    # faciltates handling ao object
+    "xarray",
+    "pandas",
+    # some stuff for loading handling ao objects
+    # expect to be moved to a dedicated package
+    "bact_mml_json_importer"
+]
+
+# Todo: fix that I don't need to give a specific path
+
+[project.urls]
+Homepage = "https://github.com/dt4acc/dt4acc-als"
+Documentation = "https://github.com/dt4acc/dt4acc-als"
+Repository = "https://github.com/dt4acc/dt4acc-als.git"
+
+
+[project.scripts]
+dt4acc_als = "dt4acc_als.twin.run_als_twin:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/dt4acc_als"]
+
+[tool.hatch.build]
+dev-mode-dirs = ["src"]
