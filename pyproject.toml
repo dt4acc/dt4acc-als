@@ -43,7 +43,7 @@ Repository = "https://github.com/dt4acc/dt4acc-als.git"
 
 
 [project.scripts]
-dt4acc_als = "dt4acc_als.twin.run_als_twin:main"
+dt4acc_als = "dt4acc_als.twin.run_als_twin:run"
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/dt4acc_als"]
