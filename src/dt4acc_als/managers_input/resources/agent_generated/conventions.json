@@ -1,0 +1,78 @@
+{
+ "facility_id": "als",
+ "view": "device",
+ "pc_cardinality": "one_to_many",
+ "host_resolution": "prefix_strip",
+ "brho": 6.30723638713274,
+ "ring_energy_ev": 1890861968.7334201,
+ "trl_convention": "",
+ "property_rules": [
+  {
+   "type": "Quadrupole",
+   "subtype": null,
+   "lattice_property": "B2",
+   "at_backing": "generic_multipole",
+   "harmonic": 2,
+   "conversion": "curve",
+   "flip_dep_sign": false
+  },
+  {
+   "type": "Sextupole",
+   "subtype": null,
+   "lattice_property": "B3",
+   "at_backing": "generic_multipole",
+   "harmonic": 3,
+   "conversion": "curve",
+   "flip_dep_sign": false
+  },
+  {
+   "type": "SkewQuadrupole",
+   "subtype": null,
+   "lattice_property": "A2",
+   "at_backing": "generic_multipole",
+   "harmonic": 2,
+   "conversion": "energy_dependent_linear",
+   "flip_dep_sign": false
+  },
+  {
+   "type": "Steerer",
+   "subtype": "H",
+   "lattice_property": "x_kick",
+   "at_backing": "specialized",
+   "harmonic": null,
+   "conversion": "energy_dependent_linear",
+   "flip_dep_sign": false
+  },
+  {
+   "type": "Steerer",
+   "subtype": "V",
+   "lattice_property": "y_kick",
+   "at_backing": "specialized",
+   "harmonic": null,
+   "conversion": "energy_dependent_linear",
+   "flip_dep_sign": false
+  },
+  {
+   "type": "Bend",
+   "subtype": null,
+   "lattice_property": "main_strength",
+   "at_backing": "specialized",
+   "harmonic": null,
+   "conversion": "energy_dependent_linear",
+   "flip_dep_sign": false
+  },
+  {
+   "type": "RFCavity",
+   "subtype": null,
+   "lattice_property": "frequency",
+   "at_backing": "specialized",
+   "harmonic": null,
+   "conversion": "linear",
+   "flip_dep_sign": false
+  }
+ ],
+ "uncontrolled_types": [
+  "BPM"
+ ],
+ "notes": "ALS quadrupoles, sextupoles and skew\u2011quadrupoles are backed by generic Multipole elements, requiring explicit harmonic B2/B3/A2. Power converters are shared (one_to_many). Host resolution is performed by stripping the common prefix from device names."
+}

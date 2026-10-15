@@ -47,7 +47,13 @@ async def main():
         acc=PyATAcceleratorSimulator(at_lattice=lat),
     )
 
-    yp, lm, ts, process_variable_views = load_managers()
+    # DT4ACC_ALS_MAGNET_TABLES=agent: magnet supplies from dt4acc_agent's
+    # generated tables (ramp-table curves, skews driven), the rest native
+    if os.environ.get("DT4ACC_ALS_MAGNET_TABLES", "native") == "agent":
+        from dt4acc_als.managers_input.dt4acc_bootstrap.agent_tables import load_managers as load_agent_managers
+        yp, lm, ts, process_variable_views = load_agent_managers()
+    else:
+        yp, lm, ts, process_variable_views = load_managers()
     command_rewriter = CommandRewriter(liaison_manager=lm, translation_service=ts)
 
     mexec = TranslatingCommandExecutionEngine(
