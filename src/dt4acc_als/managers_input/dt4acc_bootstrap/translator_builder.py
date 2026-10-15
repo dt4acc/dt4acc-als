@@ -60,6 +60,9 @@ def _create_translator_luts(yp: YellowPagesBase, lm: LiaisonManagerBase, ao_tabl
     translator_lut: List[TranslatorLookupTableElement] = []
 
     dev_name = "master_clock"
+    # ALS's RF channels (EG______HQMOFM_AC01, SR01C___FREQB__AM00) are in MHz
+    # (AO RF HWUnits MHz, HW2PhysicsParams 1e6); the cavity Frequency is in Hz
+    hz_to_mhz = 1e-6
     d = lm.objects_for_device(dev_name=dev_name)
     for src, tmp in d.items():
         assert src.device_name == dev_name
@@ -67,7 +70,7 @@ def _create_translator_luts(yp: YellowPagesBase, lm: LiaisonManagerBase, ao_tabl
         translator_lut.append(
             TranslatorLookupTableElement(
                 conversion_id=ConversionID(tgt, src),
-                conversion_info=PolynomCoefficients(coeffs=[0.0, 1.0], energy_dependent=False),
+                conversion_info=PolynomCoefficients(coeffs=[0.0, hz_to_mhz], energy_dependent=False),
             )
         )
 
